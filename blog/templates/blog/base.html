@@ -1,26 +1,248 @@
 {% load static %}
-<html>
-    <head>
-        <title>App-Django-Blog</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+<!DOCTYPE html>
+<html xmlns:padding-top="http://www.w3.org/1999/xhtml">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by MMP -->
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <!-- Google Fonts
+        ============================================= -->
+        <link href='http://fonts.googleapis.com/css?family=Dosis:400,500,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+        <!-- Stylesheets
+        ============================================= -->
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" type="text/css" />
+        <link rel="stylesheet" href="{% static 'css/plugin.css' %}" type="text/css" />
+        <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css" />
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}" type="text/css" />
+
+        <!-- External Styles
+        ============================================= -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+        <!-- JavaScripts
+        ============================================= -->
+        <script type="text/javascript" src="{% static 'js/jquery.js'%}"></script>
+
+        <!-- Document Title
+        ============================================= -->
+        <title>{% block title %}{% endblock %}</title>
+
+        <!--[if gte IE 9]>
+          <style type="text/css">
+            .gradient {
+               filter: none;
+            }
+          </style>
+        <![endif]-->
     </head>
+
     <body>
-        <div class="page-header">
 
-        <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            <h1><a href="/">My Site with Python Framework</a></h1>
+        <!-- MAIN WRAPPER START
+        ============================================= -->
+        <div id="main-wrapper" class="animsition clearfix" >
 
-    </div>
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
+            <!-- HEADER START
+            ============================================= -->
+            <header id="header" class="site-header clearfix" >
+                <div class="container">
+                    <div class="row">
+                        <!-- LOGO START
+                        ============================================= -->
+                        <div class="logo col-md-2">
+                            <!--<a href="/"><img src="{#% static 'img/new_logo.png'%#}" alt="Logo"/></a>-->
+                            <h3 style="text-align: center;"><a href="/"><i class="fa fa-mortar-board"></i>StepUp for Students</a></h3>
+                        </div>
+                        <!-- LOGO END -->
+
+                        <!-- NAVIGATION START
+                        ============================================= -->
+                        <div class="navigation col-md-10 text-right">
+
+                            <!-- SEARCH BAR START
+                            ============================================= -->
+                            <div id="sb-search" class="sb-search">
+                                <form>
+                                    <input class="sb-search-input" placeholder="Enter your search term..." type="search" value="" name="search" id="search">
+                                    <input class="sb-search-submit" type="submit" value="">
+                                    <span class="sb-icon-search"><i class="fa fa-search"></i></span>
+                                </form>
+                            </div>
+                            <!-- SEARCH BAR END -->
+
+                            <!--MOBILE MENU START
+                            ============================================= -->
+                            <div class="mobile-menu">
+                                <button id="slide-buttons" class="icon icon-navicon-round"></button>
+                            </div>
+
+                            <nav id="c-menu--slide-right" class="c-menu c-menu--slide-right">
+                                <button class="c-menu__close icon icon-remove-delete"></button>
+                                <div class="logo-menu-right text-center">
+                                    <img src="{% static "img/logo-white.png" %}" alt="" />
+                                </div>
+                                <ul class="menus-mobile">
+                                      <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+
+                                    {% if request.user.is_authenticated %}
+
+                                    <li {% if section == "dashboard" %}class="selected"{% endif %}><a href="{% url "dashboard" %}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+
+                                    <li class="has-child">
+                                        <a href="#"><i class="fa fa-user"></i> Profile</a>
+                                        <ul class="child">
+                                           <li><a href="{% url "edit" %}"><i class="fa fa-edit"></i> Edit Profile</a></li>
+                                           <li><a href="{% url "password_reset" %}"><i class="fa fa-refresh"></i> Reset Password</a></li>
+                                           <li><a href="{% url "password_change" %}"><i class="fa fa-pencil-square"></i> Change Password</a></li>
+                                           <li><a href="{% url "logout" %}"><i class="fa fa-sign-out"></i> Exit</a></li>
+                                        </ul>
+                                    </li>
+                                        <li><a href="{% url "post_new" %}"><i class="fa fa-plus"></i> Add new Post</a></li>
+                                        {% else %}
+                                    <li class="has-child" >
+                                        <a href="#"><i class="fa fa-sign-in"></i> LogIn/SignIn</a>
+                                        <ul class="child">
+                                           <li><a href="{% url "login" %}"><i class="fa fa-sign-in"></i> Login</a></li>
+                                           <li><a href="{% url "register" %}"><i class="fa fa-user-plus"></i> Registration</a></li>
+                                        </ul>
+                                    </li>
+                                    {% endif %}
+                               <!--     <li><a href="index-2.html">Home</a></li>
+                                    <li class="has-child">
+                                        <a href="#">Page</a>
+                                        <ul class="child">
+                                           <li><a href="about-us.html">About Us</a></li>
+                                           <li><a href="teacher.html">Teacher</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="has-child">
+                                        <a href="classes.html">Classes</a>
+                                        <ul class="child">
+                                           <li><a href="single-classes.html">Single Classes</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="gallery.html">Gallery</a></li>
+                                    <li class="has-child">
+                                        <a href="blog.html">Blog</a>
+                                        <ul class="child">
+                                           <li><a href="single-post.html">Single Post</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Contact</a></li>-->
+                                </ul>
+                            </nav>
+                            <div id="slide-overlay" class="slide-overlay"></div>
+                            <!-- MOBILE MENU -->
+
+                            <!-- MAIN NAVIGATION START
+                            ============================================= -->
+
+                            <nav id="main-menu" class="menu">
+                                <ul id="menu-top-menu" class="menus">
+                                    <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+
+                                    {% if request.user.is_authenticated %}
+
+                                    <li {% if section == "dashboard" %}class="selected"{% endif %}><a href="{% url "dashboard" %}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+
+                                    <li class="has-child">
+                                        <a href="#"><i class="fa fa-user"></i> Profile</a>
+                                        <ul class="child">
+                                           <li><a href="{% url "edit" %}"><i class="fa fa-edit"></i> Edit Profile</a></li>
+                                           <li><a href="{% url "password_reset" %}"><i class="fa fa-refresh"></i> Reset Password</a></li>
+                                           <li><a href="{% url "password_change" %}"><i class="fa fa-pencil-square"></i> Change Password</a></li>
+                                           <li><a href="{% url "logout" %}"><i class="fa fa-sign-out"></i> Exit</a></li>
+                                        </ul>
+                                    </li>
+                                        <li><a href="{% url "post_new" %}"><i class="fa fa-plus"></i> Add new Post</a></li>
+                                        {% else %}
+                                    <li class="has-child" >
+                                        <a href="#"><i class="fa fa-sign-in"></i> LogIn/SignIn</a>
+                                        <ul class="child">
+                                           <li><a href="{% url "login" %}"><i class="fa fa-sign-in"></i> Login</a></li>
+                                           <li><a href="{% url "register" %}"><i class="fa fa-user-plus"></i> Registration</a></li>
+                                        </ul>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                            <!-- MAIN NAVIGATION END -->
+                        </div>
+                        <!-- NAVIGATION END -->
+                    </div>
+                </div>
+            </header>
+            <!-- HEADER END -->
+
+            <!-- CONTENT START
+            ============================================= -->
+            <section id="content">
+
+                <div class="content container" style="margin-top: 200px">
+                    <div class="row">
+                        <div class="col-md-8">
+                        {% block content %}
+                        {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- CONTENT END -->
+
+
+
+            <!-- COPYRIGHT START
+            ============================================= -->
+            <div id="copyright">
+                <div class="container">
+                    <div class="row">
+                        <!-- Copyright Text Start -->
+                        <div class="copyright-text col-md-6">
+                            <p>Copyright 2018 |  All Rights Reserved | Powered by Manuchehr</p>
+                        </div>
+                        <!-- Copyright Text End -->
+
+                        <!-- Social LInks Start -->
+                        <div class="social-links col-md-6">
+                            <ul class="no-padding">
+                                <li><a href="http://facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="http://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="http://tumblr.com/" target="_blank"><i class="fa fa-tumblr"></i></a></li>
+                                <li><a href="http://vimeo.com/" target="_blank"><i class="fa fa-vimeo"></i></a></li>
+                                <li><a href="http://dribbble.com/" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="http://instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="http://rss.com/" target="_blank"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                        <!-- Social Links End -->
+                    </div>
+                </div>
             </div>
+            <!-- COPYRIGHT END -->
+
         </div>
-    </div>
+        <!-- MAIN WRAPPER END -->
+
+        <!-- Footer Scripts
+        ============================================= -->
+        <!-- External -->
+        <script type="text/javascript" src="{% static 'js/plugin.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+
+                jQuery(".flexslider-wrap .flexslider").flexslider({
+                    animation: "fade",
+                    animationLoop: true,
+                    animationSpeed: 1500,
+                    slideshow: true,
+                    pauseOnHover: false,
+                    controlNav: false,
+                    directionNav: true
+                });
+
+            });
+        </script>
     </body>
 </html>
