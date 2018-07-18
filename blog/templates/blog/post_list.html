@@ -1,12 +1,14 @@
 {% extends 'blog/base.html' %}
-{% block title %}Post List{% endblock %}
+{% block title %}Comments | Student Comments{% endblock %}
 {% block content %}
 {% for post in posts %}
     <div class="post">
         <div class="date">
-            <p><i class="fa fa-bullhorn"></i> Опубликовано: {{ post.published_date }}</p>
+            <p><i class="fa fa-bullhorn"></i><b> Опубликовано: </b>{{ post.published_date }}</p>
+            <p><i class="fa fa-user"></i><b> Автор: </b>{{ post.author }}</p>
+
         </div>
-        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+        <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
         <p>{{ post.text|linebreaksbr }}</p>
     </div><hr>
 {% endfor %}

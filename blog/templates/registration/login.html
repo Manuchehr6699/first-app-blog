@@ -3,16 +3,16 @@
 {% block content %}
     <h1><span class="fa fa-sign-in"></span> Log-in</h1>
     {% if form.errors %}
-        <p>
+        <p style="color: red;">
             Your username and password didn't match.
             Please try again.
         </p>
     {% else %}
-      <p>Please, use the following form to log-in. If you don't have an account <a href="{% url "register" %}">register here</a></p>
+      <p style="color: red;">Please, use the following form to log-in. If you don't have an account <a href="{% url "register" %}">register here</a></p>
     {% endif %}
     <div class="login-form">
         <form action="{% url 'login' %}" method="post">
-            <p><a href="{% url "password_reset" %}">Forgotten your password?</a></p>
+            <p><a href="{% url "password_reset" %}"><span style=""> Forgotten your password?</span></a></p>
             {{ form.as_p }}
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ next }}"/>

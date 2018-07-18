@@ -11,7 +11,7 @@ from .models import Profile
 
 
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_detail(request, pk):
@@ -105,3 +105,7 @@ def edit(request):
                       'blog/edit.html',
                       {'user_form': user_form,
                        'profile_form': profile_form})
+
+
+def password_reset_done(request):
+    return render(request, 'registration/password_reset_complete.html', {})

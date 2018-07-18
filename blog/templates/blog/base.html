@@ -1,20 +1,20 @@
 {% load static %}
 <!DOCTYPE html>
-<html xmlns:padding-top="http://www.w3.org/1999/xhtml">
+<html>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by MMP -->
 <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <!-- Google Fonts
         ============================================= -->
-        <link href='http://fonts.googleapis.com/css?family=Dosis:400,500,700' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+        <!--<link href='http://fonts.googleapis.com/css?family=Dosis:400,500,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>-->
         <!-- Stylesheets
         ============================================= -->
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}" type="text/css" />
         <link rel="stylesheet" href="{% static 'css/plugin.css' %}" type="text/css" />
         <link rel="stylesheet" href="{% static 'css/style.css'%}" type="text/css" />
         <link rel="stylesheet" href="{% static 'css/responsive.css' %}" type="text/css" />
-
+        <link rel = "shortcut icon" href = "{% static 'img/favicon.ico'%}" type="image/x-icon">
         <!-- External Styles
         ============================================= -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -51,7 +51,7 @@
                         ============================================= -->
                         <div class="logo col-md-2">
                             <!--<a href="/"><img src="{#% static 'img/new_logo.png'%#}" alt="Logo"/></a>-->
-                            <h3 style="text-align: center;"><a href="/"><i class="fa fa-mortar-board"></i>StepUp for Students</a></h3>
+                            <h4 style="text-align: center;"><a href="/"><i class="fa fa-mortar-board"></i>Step Up For Students</a></h4>
                         </div>
                         <!-- LOGO END -->
 
@@ -82,7 +82,7 @@
                                     <img src="{% static "img/logo-white.png" %}" alt="" />
                                 </div>
                                 <ul class="menus-mobile">
-                                      <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                                      <li><a href="/"><i class="fa fa-bullhorn"></i> Comments</a></li>
 
                                     {% if request.user.is_authenticated %}
 
@@ -97,7 +97,7 @@
                                            <li><a href="{% url "logout" %}"><i class="fa fa-sign-out"></i> Exit</a></li>
                                         </ul>
                                     </li>
-                                        <li><a href="{% url "post_new" %}"><i class="fa fa-plus"></i> Add new Post</a></li>
+                                        <li><a href="{% url "post_new" %}"><i class="fa fa-pencil"></i> Write Comment</a></li>
                                         {% else %}
                                     <li class="has-child" >
                                         <a href="#"><i class="fa fa-sign-in"></i> LogIn/SignIn</a>
@@ -107,6 +107,7 @@
                                         </ul>
                                     </li>
                                     {% endif %}
+                                {% if request.user.is_authenticated %}<li><a href="{% url "logout" %}"><i class="fa fa-sign-out"></i> Exit</a></li>{% endif %}
                                <!--     <li><a href="index-2.html">Home</a></li>
                                     <li class="has-child">
                                         <a href="#">Page</a>
@@ -139,7 +140,7 @@
 
                             <nav id="main-menu" class="menu">
                                 <ul id="menu-top-menu" class="menus">
-                                    <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                                    <li><a href="/"><i class="fa fa-bullhorn"></i> Comments</a></li>
 
                                     {% if request.user.is_authenticated %}
 
@@ -154,7 +155,7 @@
                                            <li><a href="{% url "logout" %}"><i class="fa fa-sign-out"></i> Exit</a></li>
                                         </ul>
                                     </li>
-                                        <li><a href="{% url "post_new" %}"><i class="fa fa-plus"></i> Add new Post</a></li>
+                                        <li><a href="{% url "post_new" %}"><i class="fa fa-pencil"></i> Write Comment</a></li>
                                         {% else %}
                                     <li class="has-child" >
                                         <a href="#"><i class="fa fa-sign-in"></i> LogIn/SignIn</a>
@@ -164,6 +165,7 @@
                                         </ul>
                                     </li>
                                     {% endif %}
+                                {% if request.user.is_authenticated %}<li><a href="{% url "logout" %}"><i class="fa fa-sign-out"></i> Exit</a></li>{% endif %}
                                 </ul>
                             </nav>
                             <!-- MAIN NAVIGATION END -->

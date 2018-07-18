@@ -3,6 +3,6 @@
 {% block title %}Welcome{% endblock %}
 
 {% block content %}
-    <h1><span class="glyphicon glyphicon-user"></span> Welcome {{ new_user.first_name }}!</h1>
-    <p>Your account has been successfully created. Now you can <a href="{% url "login" %}">log in</a>.</p>
+    <h1><span class="fa fa-check-square"></span> Welcome {{ new_user.first_name }}!</h1>
+    <p clsas="complete_request"><span class="fa fa-check"></span> Your account has been successfully created. Now you can <a href="{% url "login" %}">log in</a>.</p>
 {% endblock %}
