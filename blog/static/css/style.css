@@ -1821,4 +1821,73 @@ ul.lesson li:first-child {
 .complete_request{
     color: lawngreen;
     font-size: 1.4em;
+
 }
+.content{
+    margin-top: 200px;
+
+}
+
+.context{text-align: justify; font-size: 1.1em; text-indent: 1em;}
+
+.success{
+    background-color: lawngreen;
+    padding: 10px 20px;
+    color: #0097A7;
+    font-size: 1.4em;
+    width: 50%;
+}
+
+
+.error{
+    background-color: red;
+    padding: 10px 20px;
+    color: white;
+    font-size: 1.4em;
+    width: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,5 @@
-{% load static %}
+{% load static%}
+
 <!DOCTYPE html>
 <html>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by MMP -->
@@ -171,7 +172,6 @@
                             <!-- MAIN NAVIGATION END -->
                         </div>
                         <!-- NAVIGATION END -->
-                    </div>
                 </div>
             </header>
             <!-- HEADER END -->
@@ -180,7 +180,26 @@
             ============================================= -->
             <section id="content">
 
-                <div class="content container" style="margin-top: 200px">
+
+
+
+                <div class="content container" >
+
+                      {% if messages %}
+
+
+                    </div>
+                 <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">
+                {{ message|safe }}
+                <a href="#" class="close">✖</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
                     <div class="row">
                         <div class="col-md-8">
                         {% block content %}

@@ -31,6 +31,15 @@
 		.contact-form form input#name, .contact-form form input#email {
 		    width: 49.1%;
 		}
+		/*--------------------------------messages_django-----------------------------------*/
+		.success{
+			color: #0097A7;
+			padding: 10px 0px;
+			background-color: greenyellow;
+		}
+		.content{
+			margin-top: 25%;
+		}
 	}
 
 	@media only screen and (max-width: 992px) {
@@ -169,6 +178,10 @@
 		.teacher-nav .col-md-3 {
 		    width: 25%;
 		}
+
+		.content{
+			margin-top: 25%;
+		}
 	}
 
 	@media only screen and (max-width: 768px) {
@@ -223,6 +236,9 @@
 		.flexslider-wrap .flexslider .slides .flex-content p {
 		    font-size: 14px !important;
 		}
+		.content{
+			margin-top: 25%;
+		}
 	}
 
 	@media only screen and (max-width: 640px) {
@@ -232,6 +248,9 @@
 		}
 		.class-course-nav li {
 		    width: 50%;
+		}
+		.content{
+			margin-top: 25%;
 		}
 	}
 
@@ -252,5 +271,8 @@
 		.flexslider-wrap .flexslider .slides .flex-content h1 {
 		    font-size: 24px !important;
 		    line-height: 1;
+		}
+		.content{
+			margin-top: 40%;
 		}
 	}

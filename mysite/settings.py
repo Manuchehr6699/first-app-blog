@@ -127,8 +127,8 @@ LOGOUT_URL = reverse_lazy('logout')
 
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'muzafarov9797@gmail.com'
-EMAIL_HOST_PASSWORD = 'secret'
+EMAIL_HOST_USER = 'muzafarov7001911@gmail.com'
+EMAIL_HOST_PASSWORD = 'manu7001911'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
@@ -136,3 +136,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'blog.authentication.EmailAuthBackend',
+)
